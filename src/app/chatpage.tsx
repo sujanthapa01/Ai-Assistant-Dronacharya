@@ -19,13 +19,11 @@ const ChatPage: React.FC = () => {
   const [input, setInput] = useState<string>("")
   const [responses, setResponses] = useState<chatMessageTypes[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [error, setError] = useState<string>("")
   const chatContainerRef = useRef<HTMLDivElement | null>(null)
 
   async function handleSendResponse(): Promise<void> {
     if (!input.trim()) return
     setIsLoading(true)
-    setError("")
 
     const newMessage: chatMessageTypes = { message: input, response: "" }
     setResponses((prev) => [...prev, newMessage])
@@ -41,7 +39,6 @@ const ChatPage: React.FC = () => {
       })
     } catch (err) {
       console.error("Error fetching response:", err)
-      setError("Failed to fetch response. Please try again.")
     } finally {
       setIsLoading(false)
       setInput("")
