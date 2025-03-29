@@ -1,5 +1,3 @@
-
-require(`dotenv`).config();
 import { DronacharyaAIAgent } from "@/prompt/prompt";
 
 const apikey: string | undefined = process.env.NEXT_PUBLIC_API_KEY;
